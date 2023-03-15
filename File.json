@@ -1,0 +1,17 @@
+{
+	"user1":{
+		"name":"Harry",
+		"age":21,
+		"language":"English"
+	},
+	"user2":{
+		"name":"Ron",
+		"age":20,
+		"language":"Thamil"	
+	},
+	"user3":{
+		"name":"Hermoine",
+		"age":23,
+		"language":"Malayalam"	
+	}
+}

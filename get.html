@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Exercise 6</title>
+    <style>
+        h1{color: forestgreen;}
+        h2{color: darkslateblue;}
+    </style>
+</head>
+<body><center>
+	<form action="/submitt" method="GET" style="background-color: indianred;">
+        <h1>GET Example</h1>
+		<h2>Empolyee ID:</h2><input type="text" name="id">
+		<h2>Employee Name:</h2><input type="text" name="ename"><br><br>
+		<button type="submit">Submit</button>
+	</form> 
+	<form action="/submitt-post" method="POST" style="background-color: yellowgreen;">
+		<h1>POST Example</h1>
+        <label for="sid"><h2>Student ID:</h2></label><input type="text" id="sid" name="sid">
+		<label for="sname"><h2>Student Name:</h2></label><input type="text" id="sname" name="sname"><br><br>
+		<button type="submit">Submit</button>
+	</form>
+	<form id="delete-form" style="background-color: palevioletred;">
+        <h1>DELETE Example</h1>
+        <label for="id"><h2>Enter the ID of the record to delete:</h2></label>
+        <input type="text" id="id" name="id"><br><br>
+        <button type="submit">Delete</button>
+    </form>
+    <p id="result"></p>
+    <script>
+        const form = document.getElementById('delete-form');
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const id = document.getElementById('id').value;
+            try {
+                const response = await fetch(`/records/${id}`, { method: 'DELETE' });
+                const data = await response.json();
+                document.getElementById('result').innerText = data.message;
+            } catch (error) {
+                console.error(error);
+            }
+        });
+    </script>
+	
+    <form action="/submit-form" method="POST" enctype="multipart/form-data" style="background-color: plum;">
+        <h1>File Upload Example</h1>
+        <label for="file"><h2>Select a file:</h2></label>
+        <input type="file" id="file" name="file"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <form action="/submit-redirect" method="post" style="background-color: darkgray;">
+        <h1>Redirect Example</h1>
+        <label for="name"><h2>Name:</h2></label>
+        <input type="text" id="name" name="rename"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    
+    <form action="/addUser" method="post" style="background-color: royalblue;">
+      <h1>Add a new User in JSON File</h1>
+      <label for="name"><h2>Name:</h2></label>
+      <input type="text" name="name"><br>
+      <label for="age"><h2>Age:</h2></label>
+      <input type="text" name="age"><br>
+      <label for="lang"><h2>Language:</h2></label>
+      <input type="text" name="language"><br><br>
+      <input type="submit" value="Submit">
+    </form></center>
+</body>
+</html>
